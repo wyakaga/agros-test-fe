@@ -8,6 +8,7 @@ import clsx from "clsx";
 import Input from "@/components/UI/Input";
 import UserStory from "@/components/UserStory";
 import { useRegisterMutation } from "@/services/auth";
+import { IsAuthenticated } from "@/components/RequireAuth";
 
 const Register = () => {
   const router = useRouter();
@@ -94,7 +95,7 @@ const Register = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center py-20 px-24 gap-y-16">
+    <main className="flex min-h-screen flex-col items-center py-20 lg:px-24 px-10 gap-y-16">
       <section className="flex flex-col gap-y-3 w-full">
         <div className="flex flex-col gap-y-4 text-black">
           <h2 className="font-bold text-[2rem]">Daftar Sekarang</h2>
@@ -222,4 +223,12 @@ const Register = () => {
   );
 };
 
-export default Register;
+const RegisterGuarded = () => {
+  return (
+    <IsAuthenticated>
+      <Register />
+    </IsAuthenticated>
+  );
+};
+
+export default RegisterGuarded;

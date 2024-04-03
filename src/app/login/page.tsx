@@ -1,14 +1,16 @@
 "use client";
 
 import React, { ChangeEvent, FormEvent, useMemo, useState } from "react";
+import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 import Input from "@/components/UI/Input";
 import UserStory from "@/components/UserStory";
-import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/services/auth";
-import clsx from "clsx";
 import { authAction } from "@/redux/slices/auth.slice";
 import { useAppDispatch } from "@/redux/hooks";
+import { userAction } from "@/redux/slices/user.slice";
+import { IsAuthenticated } from "@/components/RequireAuth";
 
 const Login = () => {
   const router = useRouter();
@@ -47,13 +49,16 @@ const Login = () => {
           router.push("/");
           dispatch(authAction.assignRole(data.user.role));
           dispatch(authAction.assignToken(data.token));
+          dispatch(userAction.assignName(data.user.fullName));
+          dispatch(userAction.assignEmail(data.user.email));
+          dispatch(userAction.assignId(data.user.id));
         },
       }
     );
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center py-20 px-24 gap-y-16">
+    <main className="flex min-h-screen flex-col items-center py-20 lg:px-24 px-10 gap-y-16">
       <section className="flex flex-col gap-y-6 w-full">
         <div className="flex flex-col gap-y-4 text-black">
           <h2 className="font-bold text-[2rem]">Masuk Sekarang</h2>
@@ -118,4 +123,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+const LoginGuarded = () => {
+  return (
+    <IsAuthenticated>
+      <Login />
+    </IsAuthenticated>
+  );
+};
+
+export default LoginGuarded;

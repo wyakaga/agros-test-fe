@@ -1,33 +1,31 @@
-"use client";
-
 import Image from "next/image";
 
 import shipperIllustration from "@/app/assets/shipper-illustration.png";
 import transporterIllustration from "@/app/assets/transporter-illustration.png";
 import driverIllustration from "@/app/assets/driver-illustration.jpeg";
+import compassIcon from "@/app/assets/compass-icon.png";
 
-import UserStory from "@/components/UserStory";
-import WelcomeHero from "@/components/WelcomeHero";
-import Partners from "@/components/Partners";
-import { useAppSelector } from "@/redux/hooks";
-
-export default function Home() {
-  const token = useAppSelector((state) => state.auth.token);
-
+const About = () => {
   return (
     <main className="flex min-h-screen flex-col items-center py-20 lg:px-24 px-10 gap-y-16">
-      <WelcomeHero />
+      <section className="w-full flex flex-col gap-y-12 text-black">
+        <h2 className="font-bold text-[2rem]">Tentang AGROS Indonesia</h2>
+        <div className="flex flex-col justify-center items-center w-full gap-y-16">
+          <Image src={compassIcon} alt="compass logo" className="w-6/12" />
+          <div className="w-full">
+            <p className="text-center">
+              Terinspirasi dari arah mata angin yang membawa pada satu
+              destinasi, Agros akan terus bergerak menciptakan pemerataan
+              ekonomi sehingga bisa menjadi penghubung para stakeholders dalam
+              aktivitas muatan berat, mulai dari shipper, transporter, driver,
+              mitra pemeliharan, seller dan buyer intermoda yang menjangkau
+              seluruh penjuru Nusantara.
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="w-full flex flex-col gap-y-4 text-black">
-        <h2 className="font-bold text-[2rem]">
-          Mengenal AGROS Indonesia Lebih Dekat
-        </h2>
-        <p>
-          Agros adalah sistem terpadu satu pintu—one stop service yang berfokus
-          pada pelayanan jasa logistik muatan berat. Agros menawarkan mitra
-          terlatih, efisiensi dan transparansi sistem transportasi, kemudahan
-          akses untuk layanan pemeliharaan hingga fitur transaksi.{" "}
-        </p>
-        <h3 className="font-bold text-2xl">Layanan AGROS Indonesia</h3>
+        <h2 className="font-bold text-2xl">Layanan AGROS Indonesia</h2>
         <div className="flex gap-x-6 w-full">
           <div className="flex flex-col gap-y-3 w-4/12 bg-white rounded-[10px]">
             <div className="h-[60%]">
@@ -80,8 +78,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {!token && <UserStory />}
-      <Partners />
     </main>
   );
-}
+};
+
+export default About;

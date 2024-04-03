@@ -6,8 +6,8 @@ import FooterLogo from "@/app/assets/footer-logo.png";
 
 function Footer() {
   return (
-    <footer className="footer-bg bg-no-repeat bg-cover bg-center flex items-center w-full py-1 px-24">
-      <div className="flex items-center gap-x-4 w-9/12">
+    <footer className="footer-bg bg-no-repeat bg-cover bg-center flex lg:flex-row flex-col items-center w-full py-1 lg:px-24 px-10">
+      <div className="flex items-center gap-x-4 lg:w-9/12 w-full">
         <div className="h-7">
           <Image
             src={FooterLogo}

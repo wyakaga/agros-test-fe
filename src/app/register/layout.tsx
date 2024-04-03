@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import Register from "./page";
+import RegisterGuarded from "./page";
 
 export const metadata: Metadata = {
   title: "AGROS | Daftar",
   description: "Halaman pendaftaran AGROS",
 };
 
-export default Register;
+export default RegisterGuarded;
