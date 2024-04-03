@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
+
 import Header from "@/components/UI/Header";
 import Footer from "@/components/UI/Footer";
+import { ReactQueryClientProvider } from "@/components/ReactQueryClientProvider";
+import Notification from "@/components/UI/Notification";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +29,14 @@ export default function RootLayout({
           "grid grid-cols-1 grid-rows-1 bg-primary min-h-screen"
         }
       >
-        <Header />
-        {children}
-        <Footer />
+        <ReactQueryClientProvider>
+          <ReduxProvider>
+            <Header />
+            <Notification />
+            {children}
+            <Footer />
+          </ReduxProvider>
+        </ReactQueryClientProvider>
       </body>
     </html>
   );

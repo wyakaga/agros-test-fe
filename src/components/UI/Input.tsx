@@ -5,6 +5,7 @@ type InputProps = {
   autoComplete?: string;
   required: boolean;
   placeholder?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 function Input({
@@ -14,6 +15,7 @@ function Input({
   autoComplete,
   required,
   placeholder,
+  onChange,
 }: InputProps) {
   return (
     <input
@@ -23,6 +25,7 @@ function Input({
       autoComplete={autoComplete}
       required={required}
       placeholder={placeholder}
+      onChange={onChange}
       className="appearance-none border border-[#E8E8E8] rounded-[7px] w-full px-4 py-4 placeholder:text-[#E5E5E5] placeholder:text-sm focus:outline-none focus:ring-secondary focus:border-secondary"
     />
   );
